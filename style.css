@@ -1,0 +1,390 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #27ae60;
+    color: white;
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.cart-icon {
+    cursor: pointer;
+    position: relative;
+}
+
+#cart-count {
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1506617498238-3da2a504012f?w=1350');
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.products {
+    padding: 50px 5%;
+}
+
+.products h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#search-input {
+    padding: 12px 20px;
+    width: 100%;
+    max-width: 500px;
+    border: 2px solid #27ae60;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    transition: box-shadow 0.3s;
+}
+
+#search-input:focus {
+    box-shadow: 0 0 8px rgba(39, 174, 96, 0.5);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+}
+
+.price {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.btn-buy {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-buy:hover {
+    background-color: #219150;
+}
+
+
+/* Modal styles */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 13px;
+    text-align: left;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    display: none;
+    /* Mặc định ẩn đi */
+}
+
+.modal-content form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.modal-content form button:hover {
+    background-color: #219150;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+
+/* Tinh chỉnh Modal Giỏ hàng */
+
+.cart-modal-content {
+    width: 95% !important;
+    max-width: 550px !important;
+    padding: 0 !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+}
+
+.cart-header {
+    padding: 20px;
+    border-bottom: 2px solid #f4f4f4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h2 {
+    color: #27ae60;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+#cart-items-container {
+    padding: 15px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Ngăn chặn thanh kéo ngang */
+    flex-grow: 1;
+    background-color: #fff;
+}
+
+.cart-footer {
+    padding: 20px;
+    background: #f9f9f9;
+    border-top: 2px solid #eee;
+    text-align: center;
+}
+
+.total-section {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.btn-checkout {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+}
+
+.btn-checkout:hover {
+    background-color: #219150;
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+}
+
+
+/* Styles cho danh sách trong giỏ hàng */
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    gap: 10px;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+.cart-item-info {
+    flex: 1;
+    text-align: left;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.btn-remove {
+    background: transparent !important;
+    color: #ccc;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: auto;
+    margin-left: 10px;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.btn-remove:hover {
+    color: #ff4757;
+    transform: none;
+}
+
+
+/* Styles cho bộ tăng giảm số lượng */
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.btn-qty {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-qty:hover {
+    background-color: #ddd;
+}
+
+.quantity-controls span {
+    min-width: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/* Hiệu ứng rung cho giỏ hàng */
+
+@keyframes cart-shake {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.2) rotate(-15deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(15deg);
+    }
+    75% {
+        transform: scale(1.2) rotate(-15deg);
+    }
+    100% {
+        transform: scale(1) rotate(0);
+    }
+}
+
+.shake-anim {
+    animation: cart-shake 0.5s ease-in-out;
+    color: #f1c40f !important;
+    /* Đổi màu nhẹ khi rung để gây chú ý */
+}
+
+.cart-icon {
+    transition: color 0.3s ease;
+}
